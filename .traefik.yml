@@ -1,11 +1,10 @@
-displayName: Demo Plugin
+displayName: Rewrite Header
+summary: Rewrites the HTTP response headers by replacing a search regex by a replacement string.
 type: middleware
-
-import: github.com/traefik/plugindemo
-
-summary: '[Demo] Add Request Header'
-
+import: github.com/XciD/traefik-plugin-rewrite-headers
+compatibility: TODO
 testData:
-  Headers:
-    X-Demo: test
-    X-URL: '{{URL}}'
+  rewrites:
+    - header: Location
+      regex: "^http://(.+)$"
+      replacement: "https://$1"
