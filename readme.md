@@ -39,7 +39,8 @@ http:
     rewriteHeaders:
       plugin:
         rewriteHeaders:
-          header: "Location"
-          regex: "^http://(.+)$"
-          replacement: "https://$1"
+          rewrites:
+            - header: "Location"
+              regex: "^http://(.+)$"
+              replacement: "https://$1"
 ```
