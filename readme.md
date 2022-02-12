@@ -14,7 +14,7 @@ experimental:
   plugins:
     rewriteHeaders:
       modulename: "github.com/XciD/traefik-plugin-rewrite-headers"
-      version: "v0.0.1"
+      version: "v0.0.3"
 ```
 
 ### Dynamic
@@ -39,7 +39,8 @@ http:
     rewriteHeaders:
       plugin:
         rewriteHeaders:
-          header: "Location"
-          regex: "^http://(.+)$"
-          replacement: "https://$1"
+          rewrites:
+            - header: "Location"
+              regex: "^http://(.+)$"
+              replacement: "https://$1"
 ```
