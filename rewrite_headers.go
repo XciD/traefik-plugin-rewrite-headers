@@ -1,9 +1,11 @@
-//nolint
+// nolint
 package traefik_plugin_rewrite_headers
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"net"
 	"net/http"
 	"regexp"
 )
@@ -100,4 +102,19 @@ func (r *responseWriter) WriteHeader(statusCode int) {
 	}
 
 	r.writer.WriteHeader(statusCode)
+}
+
+func (r *responseWriter) Hijack() (net.Conn, *bufio.ReadWriter, error) {
+	hijacker, ok := r.writer.(http.Hijacker)
+	if !ok {
+		return nil, nil, fmt.Errorf("%T is not a http.Hijacker", r.writer)
+	}
+
+	return hijacker.Hijack()
+}
+
+func (r *responseWriter) Flush() {
+	if flusher, ok := r.writer.(http.Flusher); ok {
+		flusher.Flush()
+	}
 }
