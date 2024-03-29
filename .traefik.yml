@@ -1,8 +1,7 @@
 displayName: Rewrite Header
 summary: Rewrites the HTTP response headers by replacing a search regex by a replacement string.
 type: middleware
-import: github.com/XciD/traefik-plugin-rewrite-headers
-compatibility: TODO
+import: github.com/baod-rate/traefik-plugin-rewrite-headers
 testData:
   rewrites:
     - header: Location
