@@ -14,7 +14,7 @@ experimental:
   plugins:
     rewriteHeaders:
       modulename: "github.com/XciD/traefik-plugin-rewrite-headers"
-      version: "v0.0.3"
+      version: "v0.0.4"
 ```
 
 ### Dynamic
